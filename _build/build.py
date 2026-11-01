@@ -46,7 +46,7 @@ def head(title, desc, path):
 <link rel="preload" href="/fonts/yellowtail-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/bungee-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/bebas-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/css/styles.css?v=3">
+<link rel="stylesheet" href="/css/styles.css?v=4">
 <script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":"WebSite","name":"Macca the Gator ($Macca)","url":SITE+"/"})}</script>
 </head>
 <body>
@@ -61,7 +61,7 @@ def hud(active):
     return f'''<header class="hud" id="hud">
   <a class="brand" href="/" aria-label="Macca the Gator home"><img src="/img/logo-200.webp" alt="" width="42" height="42"><b>Macca</b></a>
   <nav class="nav" id="nav" aria-label="Main">
-    {a(base+"#about","Story","about")}{a(base+"#missions","Missions","missions")}{a(base+"#howto","How to Buy","howto")}{a("/memes","Meme Vault","memes")}{a(base+"#faq","FAQ","faq")}
+    {a(base+"#about","Story","about")}{a(base+"#vibes","Vibes","vibes")}{a(base+"#missions","Missions","missions")}{a(base+"#howto","How to Buy","howto")}{a(base+"#crew","Gallery","crew")}{a("/memes","Meme Vault","memes")}{a(base+"#faq","FAQ","faq")}
   </nav>
   <div class="hud-r">
     <div class="wanted" id="wanted" aria-label="Wanted level" title="Wanted level rises as you scroll"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></div>
@@ -111,7 +111,7 @@ def footer():
 <script src="/js/vendor/lenis.min.js" defer></script>
 <script src="/js/vendor/gsap.min.js" defer></script>
 <script src="/js/vendor/ScrollTrigger.min.js" defer></script>
-<script src="/js/main.js?v=3" defer></script>
+<script src="/js/main.js?v=4" defer></script>
 </body>
 </html>
 '''
@@ -137,6 +137,41 @@ CITY = '''<svg viewBox="0 0 1600 400" preserveAspectRatio="xMidYMax slice" aria-
 <path d="M0 400V250h60v-40h50v60h40V180h70v220z"/><path d="M220 400V140h30V90h20v50h40v260z"/><path d="M310 400V220h80v-30h40v210z"/><path d="M430 400V120l50-40 50 40v280z"/><path d="M530 400V230h90v170z"/><path d="M620 400V160h40v-50h60v50h30v240z"/><path d="M750 400V60h14V20h12v40h14v340z"/><path d="M790 400V200h100v200z"/><path d="M890 400V130h70v270z"/><path d="M960 400V240h60v-60h50v220z"/><path d="M1070 400V100l40-30 40 30v300z"/><path d="M1150 400V210h90v190z"/><path d="M1240 400V150h60v-40h40v290z"/><path d="M1340 400V240h80v160z"/><path d="M1420 400V170h70v230z"/><path d="M1490 400V260h110v140z"/></g>
 <g fill="#1fd6c8" opacity=".8" class="winds">'''+ ''.join(f'<rect x="{x}" y="{y}" width="6" height="8"/>' for x,y in [(240,170),(260,210),(450,150),(470,200),(650,190),(700,240),(760,90),(770,140),(905,160),(930,210),(1090,130),(1110,190),(1260,180),(1300,230),(1440,200),(1460,260),(70,280),(345,250)]) + '''</g>
 <g fill="#ff3d9a" opacity=".9">'''+ ''.join(f'<rect x="{x}" y="{y}" width="6" height="8"/>' for x,y in [(250,250),(480,260),(640,290),(780,200),(910,300),(1100,250),(1280,300),(1450,320),(560,270),(820,260),(1180,250),(990,290)]) + '''</g></svg>'''
+
+
+# ---- community / X drop (img/x/xNN.webp + -480.webp; vid/vibe-NN.mp4) ----
+XCAP = {1:"Running the books from the penthouse",2:"Malibu Club, after hours",3:"Window shopping on Ocean Drive",4:"Speedboat run at golden hour",
+5:"Rolling with the crew",6:"Top down, palms up",7:"Pulled over, still smiling",8:"Overlooking Vice City",9:"Block party cameo",
+10:"Planning the big score",11:"Night shift in the muscle car",12:"Suited up for business",13:"Cash rain at the club",14:"Spotted on a billboard",
+15:"Green suit, gold glow",16:"Sunset on the hood",17:"Watch party at the safehouse",18:"Leg day in Leonida",19:"Penthouse lounge",
+20:"Welcome to Vice City",21:"Wanted level: six stars",22:"Beach day with the crew",23:"Sunset squad",24:"Synthwave boardwalk",
+25:"Title fight night",26:"Martini o'clock",27:"Lazy Sunday in the safehouse",28:"Neon pier chill",29:"Dancing on the grid",30:"Strolling past the classics"}
+from PIL import Image as _I
+XDIM = {n: _I.open(os.path.join(R, f"img/x/x{n:02d}.webp")).size for n in XCAP}
+def xs(n, big=False): return f"/img/x/x{n:02d}{'' if big else '-480'}.webp"
+def reel_row(ns):
+    one = "".join(f'<figure class="rf"><img data-src="{xs(n)}" alt="" width="520" height="390" decoding="async"></figure>' for n in ns)
+    return f'<div class="reel-row"><div class="reel-track">{one}{one}</div></div>'
+REEL = ('<div class="reel" id="reel" aria-hidden="true">\n  '
+        + reel_row([1,20,4,13,6,24,11,26,2,23,15,8,29,12,10]) + "\n  "
+        + reel_row([16,22,3,28,19,7,25,21,27,9,17,30,5,14,18]) + "\n</div>")
+VIBES = [("29",24,"FLAMINGO FM","Synthwave boardwalk"),("34",28,"NEON PIER","Lights down, bags up"),("38",29,"GRID RUNNER","Dancing on the grid"),("33",27,"SAFEHOUSE CAM","Lazy Sunday, loud chart")]
+def vibe(v, cls):
+    vid, poster, tag, cap = v
+    return (f'<figure class="vibe {cls}" data-reveal>\n'
+            f'  <video muted loop playsinline preload="none" poster="{xs(poster, True)}" data-vibe aria-label="{e(cap)}"><source src="/vid/vibe-{vid}.mp4" type="video/mp4"></video>\n'
+            f'  <span class="vtag"><i></i>{tag}</span><figcaption>{e(cap)}</figcaption>\n</figure>')
+def vstill(n, cls, tag):
+    return (f'<figure class="vibe still {cls}" data-reveal>\n'
+            f'  <img src="{xs(n, True)}" alt="{e(XCAP[n])}" width="{XDIM[n][0]}" height="{XDIM[n][1]}" loading="lazy" decoding="async">\n'
+            f'  <span class="vtag">{tag}</span><figcaption>{e(XCAP[n])}</figcaption>\n</figure>')
+WALL = [10,1,21,12,6,23,15,4,13,20,19,2,22,26,11,8,30,16]
+def xtile(n, i):
+    big = i in (0, 9)
+    return (f'<button type="button" class="xi vm-btn{" wide" if big else ""}" data-full="{xs(n, True)}" data-cap="{e(XCAP[n])}" data-reveal>\n'
+            f'  <span class="n">X·{n:02d}</span>\n'
+            f'  <img src="{xs(n, big)}" alt="{e(XCAP[n])}" width="{XDIM[n][0]}" height="{XDIM[n][1]}" loading="lazy" decoding="async">\n'
+            f'  <figcaption>{e(XCAP[n])}</figcaption>\n</button>')
 
 def index():
     feat = primary[:6]
@@ -171,6 +206,11 @@ def index():
         <picture><source media="(max-width:700px)" srcset="/img/banner-m.webp"><img src="/img/banner.webp" alt="Macca the Gator cruising a pink convertible through neon Vice City at sunset, martini in claw" width="1500" height="500" fetchpriority="high"></picture>
         <img class="logo-badge" src="/img/logo-400.webp" alt="Macca the Gator logo" width="400" height="400">
       </div>
+      <div class="snaps" aria-hidden="true">
+        <figure class="snap s1"><img src="{xs(20)}" alt="" width="520" height="292" decoding="async" fetchpriority="low"><span>vice city</span></figure>
+        <figure class="snap s2"><img src="{xs(26)}" alt="" width="520" height="390" decoding="async" fetchpriority="low"><span>stay pink</span></figure>
+        <figure class="snap s3"><img src="{xs(4)}" alt="" width="520" height="390" decoding="async" fetchpriority="low"><span>golden hour</span></figure>
+      </div>
     </div>
   </div>
   <div class="scrollcue">SCROLL TO START ▼</div>
@@ -178,6 +218,7 @@ def index():
 
 <div class="marq" aria-hidden="true"><div class="track">{"".join("<span>"+t+"</span>" for t in ["$MACCA ★","FLAMINGO BLOOD","PALM TREES","ONE COIN ★","STAY PINK","HOLD BAGS","SKIP THE HEIST ★","LEONIDA","ON ETHEREUM ★"]*2)}</div></div>
 <div class="marq alt" aria-hidden="true"><div class="track">{"".join("<span>"+t+"</span>" for t in ["VICE CITY ANIMALS","COMMUNITY EDITION ★","GOODTIME STATE","UNISWAP","DEXSCREENER ★","@MACCAGATOR_ETH"]*3)}</div></div>
+{REEL}
 
 <section id="about">
   <div class="wrap">
@@ -204,13 +245,27 @@ def index():
   </div>
 </section>
 
+<section id="vibes">
+  <div class="wrap">
+    <div class="sec-h" data-reveal><span class="num">02</span><h2>Vibe <em>Check</em></h2><p>// LIVE FROM THE GOODTIME STATE · COMMUNITY CUTS FROM X</p></div>
+    <div class="vibes">
+{vibe(VIBES[0], "v-a")}
+{vstill(13, "v-b", "CASH RAIN")}
+{vibe(VIBES[1], "v-c")}
+{vibe(VIBES[2], "v-d")}
+{vstill(5, "v-e", "ON PATROL")}
+{vibe(VIBES[3], "v-f")}
+    </div>
+  </div>
+</section>
+
 <section id="missions">
   <div class="wrap">
-    <div class="sec-h" data-reveal><span class="num">02</span><h2>Mission <em>Select</em></h2><p>// CHOOSE YOUR NEXT MOVE</p></div>
+    <div class="sec-h" data-reveal><span class="num">03</span><h2>Mission <em>Select</em></h2><p>// CHOOSE YOUR NEXT MOVE</p></div>
     <div class="missions">
       <a class="mission m-buy" href="{BUY}" target="_blank" rel="noopener" data-tilt data-reveal><span class="bgimg" style="background-image:url(/img/banner-m.webp)"></span><span class="mtag">MISSION 01</span><div class="in"><h3>The Pink Swap</h3><p>Grab $Macca on Uniswap — Ethereum mainnet, exact CA pre-filled.</p><span class="go">Buy on Uniswap</span></div></a>
       <a class="mission m-chart" href="{CHART}" target="_blank" rel="noopener" data-tilt data-reveal><span class="bgimg" style="background-image:url(/img/gallery/poster-leonida.webp)"></span><span class="mtag">MISSION 02</span><div class="in"><h3>Stake Out the Chart</h3><p>Watch the candles from the safehouse on DexScreener.</p><span class="go">Open Chart</span></div></a>
-      <a class="mission m-x" href="{X}" target="_blank" rel="noopener" data-tilt data-reveal><span class="bgimg" style="background-image:url(/img/vault/meme-07-480.webp)"></span><span class="mtag">MISSION 03</span><div class="in"><h3>Join the Crew</h3><p>Follow @MaccaGator_ETH on X for the drops, raids and memes.</p><span class="go">Follow on X</span></div></a>
+      <a class="mission m-x" href="{X}" target="_blank" rel="noopener" data-tilt data-reveal><span class="bgimg" style="background-image:url(/img/x/x17-480.webp)"></span><span class="mtag">MISSION 03</span><div class="in"><h3>Join the Crew</h3><p>Follow @MaccaGator_ETH on X for the drops, raids and memes.</p><span class="go">Follow on X</span></div></a>
     </div>
     <div class="live" id="live" data-reveal>
       <div><small>PRICE</small><b data-stat="price">—</b></div>
@@ -223,7 +278,7 @@ def index():
 
 <section id="howto">
   <div class="wrap">
-    <div class="sec-h" data-reveal><span class="num">03</span><h2>How to <em>Buy</em></h2><p>// TUTORIAL MISSION · UNISWAP · ETHEREUM</p></div>
+    <div class="sec-h" data-reveal><span class="num">04</span><h2>How to <em>Buy</em></h2><p>// TUTORIAL MISSION · UNISWAP · ETHEREUM</p></div>
     <div class="steps">
       <div class="step" data-reveal><span class="ck">✓ COMPLETE</span><h3>Get a Wallet</h3><p>Install MetaMask, Rabby, Coinbase Wallet or any Ethereum wallet. Back up your seed phrase offline — never share it.</p></div>
       <div class="step" data-reveal><span class="ck">✓ COMPLETE</span><h3>Load Up ETH</h3><p>Buy ETH on an exchange and send it to your wallet on Ethereum mainnet. Keep a little extra for gas.</p></div>
@@ -240,7 +295,7 @@ def index():
 
 <section id="vault">
   <div class="wrap">
-    <div class="sec-h" data-reveal><span class="num">04</span><h2>Meme <em>Vault</em></h2><p>// EVIDENCE BOARD · {len(primary)} FILES RECOVERED</p></div>
+    <div class="sec-h" data-reveal><span class="num">05</span><h2>Meme <em>Vault</em></h2><p>// EVIDENCE BOARD · {len(primary)} FILES RECOVERED</p></div>
     <div class="gal">
 {gal}
     </div>
@@ -248,9 +303,19 @@ def index():
   </div>
 </section>
 
+<section id="crew">
+  <div class="wrap">
+    <div class="sec-h" data-reveal><span class="num">06</span><h2>Postcards from <em>Leonida</em></h2><p>// COMMUNITY WALL · {len(WALL)} SHOTS FROM THE X TIMELINE</p></div>
+    <div class="xwall">
+{chr(10).join(xtile(n, i) for i, n in enumerate(WALL))}
+    </div>
+    <div class="center"><a class="btn gold" href="{X}" target="_blank" rel="noopener">{ICON_X} More on X · @MaccaGator_ETH</a></div>
+  </div>
+</section>
+
 <section id="faq">
   <div class="wrap">
-    <div class="sec-h" data-reveal><span class="num">05</span><h2>Intel <em>FAQ</em></h2><p>// KNOW BEFORE YOU GO</p></div>
+    <div class="sec-h" data-reveal><span class="num">07</span><h2>Intel <em>FAQ</em></h2><p>// KNOW BEFORE YOU GO</p></div>
     <div class="faq">
       <details data-reveal><summary>What is $Macca?</summary><p>Macca the Gator ($Macca) is a community-driven parody memecoin on Ethereum celebrating Leonida's pink cartoon gator. It is a fan meme — no utility, no roadmap, just vibes.</p></details>
       <details data-reveal><summary>What chain is it on?</summary><p>Ethereum mainnet. The main liquidity pair is on Uniswap: <code>{PAIR}</code></p></details>
@@ -262,7 +327,7 @@ def index():
   </div>
 </section>
 
-<section class="final">
+<section class="final" style="background-image:url(/img/x/x23.webp)">
   <div class="wrap">
     <h2 data-reveal>Stay Pink.</h2>
     <p data-reveal>Hold bags. Skip the heist.</p>

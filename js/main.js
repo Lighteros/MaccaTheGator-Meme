@@ -237,4 +237,28 @@
     })(i);
   }
   var title = $('#title'); if (title) title.addEventListener('click', function () { burst(innerWidth / 3, innerHeight / 2); rain(); });
+  /* ---------- X drop: photo reel lazy-load ---------- */
+  var reel = $('#reel');
+  if (reel) {
+    var loadReel = function () {
+      $$('img[data-src]', reel).forEach(function (im) { im.onload = function () { im.classList.add('ld'); }; im.src = im.dataset.src; im.removeAttribute('data-src'); });
+    };
+    if ('IntersectionObserver' in window) {
+      var rio = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { loadReel(); rio.disconnect(); } }, { rootMargin: '600px 0px' });
+      rio.observe(reel);
+    } else loadReel();
+  }
+
+  /* ---------- X drop: vibe videos play on view ---------- */
+  var vids = $$('video[data-vibe]');
+  if (vids.length && !reduce && 'IntersectionObserver' in window) {
+    var vio = new IntersectionObserver(function (en) {
+      en.forEach(function (x) {
+        var v = x.target;
+        if (x.isIntersecting) { if (v.preload !== 'auto') v.preload = 'auto'; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
+        else v.pause();
+      });
+    }, { threshold: 0.35 });
+    vids.forEach(function (v) { v.muted = true; vio.observe(v); });
+  }
 })();
