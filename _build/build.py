@@ -6,7 +6,7 @@ CA = "0x65dE619562d1d1DB09E1a552C9e94C8BFA30c951"
 PAIR = "0xa209D0B77F9b36437768325e06c83924598315ef"
 BUY = "https://app.uniswap.org/swap?chain=ethereum&outputCurrency=" + CA
 CHART = "https://dexscreener.com/ethereum/0xa209d0b77f9b36437768325e06c83924598315ef"
-X = "https://x.com/MaccaofETH"
+X = "https://x.com/MaccaGator_ETH"
 SITE = "https://maccaeth.com"
 memes = json.load(open(os.path.join(R, "_build/memes.json")))
 primary = [m for m in memes if not m.get("bonus")]
@@ -35,7 +35,7 @@ def head(title, desc, path):
 <meta property="og:image" content="{SITE}/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@MaccaofETH">
+<meta name="twitter:site" content="@MaccaGator_ETH">
 <meta name="twitter:title" content="{e(title)}">
 <meta name="twitter:description" content="{e(desc)}">
 <meta name="twitter:image" content="{SITE}/og.jpg">
@@ -93,7 +93,7 @@ def footer():
       <nav aria-label="Footer">
         <a href="{BUY}" target="_blank" rel="noopener">Uniswap</a>
         <a href="{CHART}" target="_blank" rel="noopener">DexScreener</a>
-        <a href="{X}" target="_blank" rel="noopener">X / @MaccaofETH</a>
+        <a href="{X}" target="_blank" rel="noopener">X / @MaccaGator_ETH</a>
         <a href="/memes">Meme Vault</a>
       </nav>
     </div>
@@ -209,7 +209,7 @@ def index():
     <div class="missions">
       <a class="mission m-buy" href="{BUY}" target="_blank" rel="noopener" data-tilt data-reveal><span class="bgimg" style="background-image:url(/img/banner-m.webp)"></span><span class="mtag">MISSION 01</span><div class="in"><h3>The Pink Swap</h3><p>Grab $Macca on Uniswap — Ethereum mainnet, exact CA pre-filled.</p><span class="go">Buy on Uniswap</span></div></a>
       <a class="mission m-chart" href="{CHART}" target="_blank" rel="noopener" data-tilt data-reveal><span class="bgimg" style="background-image:url(/img/gallery/poster-leonida.webp)"></span><span class="mtag">MISSION 02</span><div class="in"><h3>Stake Out the Chart</h3><p>Watch the candles from the safehouse on DexScreener.</p><span class="go">Open Chart</span></div></a>
-      <a class="mission m-x" href="{X}" target="_blank" rel="noopener" data-tilt data-reveal><span class="bgimg" style="background-image:url(/img/vault/meme-07-480.webp)"></span><span class="mtag">MISSION 03</span><div class="in"><h3>Join the Crew</h3><p>Follow @MaccaofETH on X for the drops, raids and memes.</p><span class="go">Follow on X</span></div></a>
+      <a class="mission m-x" href="{X}" target="_blank" rel="noopener" data-tilt data-reveal><span class="bgimg" style="background-image:url(/img/vault/meme-07-480.webp)"></span><span class="mtag">MISSION 03</span><div class="in"><h3>Join the Crew</h3><p>Follow @MaccaGator_ETH on X for the drops, raids and memes.</p><span class="go">Follow on X</span></div></a>
     </div>
     <div class="live" id="live" data-reveal>
       <div><small>PRICE</small><b data-stat="price">—</b></div>
@@ -255,7 +255,7 @@ def index():
       <details data-reveal><summary>What chain is it on?</summary><p>Ethereum mainnet. The main liquidity pair is on Uniswap: <code>{PAIR}</code></p></details>
       <details data-reveal><summary>What is the contract address?</summary><p><code>{CA}</code> — always double-check it before swapping. Anything else is not us.</p></details>
       <details data-reveal><summary>Where do I buy?</summary><p>On <a href="{BUY}" target="_blank" rel="noopener">Uniswap</a> with ETH. Track it on <a href="{CHART}" target="_blank" rel="noopener">DexScreener</a>.</p></details>
-      <details data-reveal><summary>Where is the community?</summary><p>On X at <a href="{X}" target="_blank" rel="noopener">@MaccaofETH</a>.</p></details>
+      <details data-reveal><summary>Where is the community?</summary><p>On X at <a href="{X}" target="_blank" rel="noopener">@MaccaGator_ETH</a>.</p></details>
       <details data-reveal><summary>Is this official Rockstar / GTA?</summary><p>No. This is a fan-made parody memecoin. Not affiliated with, endorsed by, or connected to Rockstar Games, Take-Two Interactive, or Grand Theft Auto.</p></details>
     </div>
   </div>
