@@ -2,10 +2,10 @@
 """Generates index.html + memes.html. Re-run after adding memes to _build/memes.json + img/vault."""
 import json, html, os
 R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CA = "0x65dE619562d1d1DB09E1a552C9e94C8BFA30c951"
-PAIR = "0xa209D0B77F9b36437768325e06c83924598315ef"
+CA = "0x8822e660ED5b894E1158533213b1173716cDB522"
+PAIR = "0xc6c36dd44cee3fac53b8eda1cf551117c7e3664fad74df587f20f6101b5fc511"
 BUY = "https://app.uniswap.org/swap?chain=ethereum&outputCurrency=" + CA
-CHART = "https://dexscreener.com/ethereum/0xa209d0b77f9b36437768325e06c83924598315ef"
+CHART = "https://dexscreener.com/ethereum/0xc6c36dd44cee3fac53b8eda1cf551117c7e3664fad74df587f20f6101b5fc511"
 X = "https://x.com/MaccaGator_ETH"
 SITE = "https://maccaeth.com"
 memes = json.load(open(os.path.join(R, "_build/memes.json")))
