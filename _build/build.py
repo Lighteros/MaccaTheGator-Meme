@@ -26,7 +26,7 @@ def head(title, desc, path):
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{SITE}{path}">
-<meta name="theme-color" content="#0d0418">
+<meta name="theme-color" content="#0a0614">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Macca the Gator">
 <meta property="og:title" content="{e(title)}">
@@ -45,7 +45,8 @@ def head(title, desc, path):
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/fonts/yellowtail-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/bungee-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/css/styles.css?v=2">
+<link rel="preload" href="/fonts/bebas-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/styles.css?v=3">
 <script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":"WebSite","name":"Macca the Gator ($Macca)","url":SITE+"/"})}</script>
 </head>
 <body>
@@ -105,12 +106,12 @@ def footer():
   </div>
 </footer>
 <div class="radio" id="radio"><div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></div><span class="lbl2">RADIO: <span id="station">FLAMINGO FM</span></span><button type="button" id="radioBtn" aria-pressed="false">TUNE</button></div>
-<div class="minimap" aria-hidden="true"><div class="sweep"></div><span class="dot" style="left:22%;top:30%"></span><span class="dot" style="left:70%;top:62%;background:var(--cyan);box-shadow:var(--cglow)"></span><span class="dot" style="left:60%;top:20%;background:var(--sun)"></span><svg class="prog" viewBox="0 0 100 100"><circle id="progc" cx="50" cy="50" r="48" fill="none" stroke="#ff2fa8" stroke-width="4" stroke-dasharray="301.6" stroke-dashoffset="301.6" transform="rotate(-90 50 50)"/></svg><span class="me"></span></div>
+<div class="minimap" aria-hidden="true"><div class="sweep"></div><span class="dot" style="left:22%;top:30%"></span><span class="dot" style="left:70%;top:62%;background:var(--cyan);box-shadow:var(--cglow)"></span><span class="dot" style="left:60%;top:20%;background:var(--sun)"></span><svg class="prog" viewBox="0 0 100 100"><circle id="progc" cx="50" cy="50" r="48" fill="none" stroke="#ff7a59" stroke-width="4" stroke-dasharray="301.6" stroke-dashoffset="301.6" transform="rotate(-90 50 50)"/></svg><span class="me"></span></div>
 <div id="toast" role="status" aria-live="polite"><b>MISSION PASSED!</b><span>CA copied · +RESPECT</span></div>
 <script src="/js/vendor/lenis.min.js" defer></script>
 <script src="/js/vendor/gsap.min.js" defer></script>
 <script src="/js/vendor/ScrollTrigger.min.js" defer></script>
-<script src="/js/main.js?v=2" defer></script>
+<script src="/js/main.js?v=3" defer></script>
 </body>
 </html>
 '''
@@ -131,11 +132,11 @@ LB = '''<div id="lb" hidden role="dialog" aria-modal="true" aria-label="Meme vie
 
 PALM = '<svg viewBox="0 0 200 400" aria-hidden="true"><path d="M104 400c-6-90-4-170 6-250l-8-1c-12 80-14 160-8 251z"/><path d="M106 150c-30-30-70-40-104-30 30 0 60 12 84 40-30-10-62-6-86 12 34-10 62-4 90 8-18 14-30 38-32 66 12-26 28-46 50-58l2-2c4 26 16 48 34 62-10-22-14-44-12-66 26 8 46 26 60 50-6-32-26-56-52-66 30-4 58 6 82 26-18-32-50-46-84-42 22-18 52-26 84-20-34-16-70-10-98 14 6-30 28-54 56-66-36 4-64 30-74 62z"/></svg>'
 
-CITY = '''<svg viewBox="0 0 1600 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs><linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b0750"/><stop offset="1" stop-color="#14022a"/></linearGradient></defs>
-<g fill="url(#bg1)" stroke="#ff2fa8" stroke-opacity=".55" stroke-width="2">
+CITY = '''<svg viewBox="0 0 1600 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs><linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a1258"/><stop offset="1" stop-color="#12081f"/></linearGradient></defs>
+<g fill="url(#bg1)" stroke="#ff7a59" stroke-opacity=".55" stroke-width="2">
 <path d="M0 400V250h60v-40h50v60h40V180h70v220z"/><path d="M220 400V140h30V90h20v50h40v260z"/><path d="M310 400V220h80v-30h40v210z"/><path d="M430 400V120l50-40 50 40v280z"/><path d="M530 400V230h90v170z"/><path d="M620 400V160h40v-50h60v50h30v240z"/><path d="M750 400V60h14V20h12v40h14v340z"/><path d="M790 400V200h100v200z"/><path d="M890 400V130h70v270z"/><path d="M960 400V240h60v-60h50v220z"/><path d="M1070 400V100l40-30 40 30v300z"/><path d="M1150 400V210h90v190z"/><path d="M1240 400V150h60v-40h40v290z"/><path d="M1340 400V240h80v160z"/><path d="M1420 400V170h70v230z"/><path d="M1490 400V260h110v140z"/></g>
-<g fill="#21f3ff" opacity=".8" class="winds">'''+ ''.join(f'<rect x="{x}" y="{y}" width="6" height="8"/>' for x,y in [(240,170),(260,210),(450,150),(470,200),(650,190),(700,240),(760,90),(770,140),(905,160),(930,210),(1090,130),(1110,190),(1260,180),(1300,230),(1440,200),(1460,260),(70,280),(345,250)]) + '''</g>
-<g fill="#ff5ec4" opacity=".9">'''+ ''.join(f'<rect x="{x}" y="{y}" width="6" height="8"/>' for x,y in [(250,250),(480,260),(640,290),(780,200),(910,300),(1100,250),(1280,300),(1450,320),(560,270),(820,260),(1180,250),(990,290)]) + '''</g></svg>'''
+<g fill="#1fd6c8" opacity=".8" class="winds">'''+ ''.join(f'<rect x="{x}" y="{y}" width="6" height="8"/>' for x,y in [(240,170),(260,210),(450,150),(470,200),(650,190),(700,240),(760,90),(770,140),(905,160),(930,210),(1090,130),(1110,190),(1260,180),(1300,230),(1440,200),(1460,260),(70,280),(345,250)]) + '''</g>
+<g fill="#ff3d9a" opacity=".9">'''+ ''.join(f'<rect x="{x}" y="{y}" width="6" height="8"/>' for x,y in [(250,250),(480,260),(640,290),(780,200),(910,300),(1100,250),(1280,300),(1450,320),(560,270),(820,260),(1180,250),(990,290)]) + '''</g></svg>'''
 
 def index():
     feat = primary[:6]
@@ -176,7 +177,7 @@ def index():
 </section>
 
 <div class="marq" aria-hidden="true"><div class="track">{"".join("<span>"+t+"</span>" for t in ["$MACCA ★","FLAMINGO BLOOD","PALM TREES","ONE COIN ★","STAY PINK","HOLD BAGS","SKIP THE HEIST ★","LEONIDA","ON ETHEREUM ★"]*2)}</div></div>
-<div class="marq alt" aria-hidden="true"><div class="track">{"".join("<span>"+t+"</span>" for t in ["VICE CITY ANIMALS","COMMUNITY EDITION ★","GOODTIME STATE","UNISWAP","DEXSCREENER ★","@MACCAOFETH"]*3)}</div></div>
+<div class="marq alt" aria-hidden="true"><div class="track">{"".join("<span>"+t+"</span>" for t in ["VICE CITY ANIMALS","COMMUNITY EDITION ★","GOODTIME STATE","UNISWAP","DEXSCREENER ★","@MACCAGATOR_ETH"]*3)}</div></div>
 
 <section id="about">
   <div class="wrap">
